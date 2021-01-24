@@ -1,0 +1,1349 @@
+version: "2.0"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- chitchat:
+    use_entities: []
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- add_new_user
+- agent_battery
+- agent_cpu
+- agent_cpu_temperature
+- call_person
+- change_robot_language
+- change_robot_name
+- change_robot_voice
+- currently_user_location
+- delete_user
+- diary_reminder
+- employee_shift_start
+- General_Jokes
+- get_agent_details
+- get_agent_feeling
+- get_agent_name
+- get_current_date
+- get_current_time
+- get_daily_schedule
+- get_list_voice_options
+- get_location_map
+- get_map
+- get_temperature
+- get_weather_in_location
+- get_weather_outside
+- help_user
+- person
+- recognize_hot_word
+- robot_languages
+- robot_location
+- run_full_diagnostics
+- schedule_appointment
+- search_object
+- search_person_and_delivere_message
+- set_an_alarm
+- set_location_2
+- set_location_person
+- start_new_conversation
+- stop_video_shooting
+- take_picture
+- tell_me_about_me
+- turn_lights
+- user_fell
+- user_location
+- user_tired
+- video_shooting
+- visitors_schedule
+- where_are_we
+- who_is_in_the_office
+- yes_no
+- search_person
+- thankyou
+- get_world_news
+- get_world_news_in_country
+- out_of_scope
+- get_agent_current
+- get_agent_voltage
+entities:
+- given_name
+- appointment_type
+- city
+- hot_word
+- language
+- language_programming
+- light
+- location
+- message
+- no
+- object
+- on_off
+- reminder_type
+- time
+- voice
+- yes
+- date
+- country
+- given_n ame
+slots:
+  appointment_type:
+    type: text
+    influence_conversation: true
+  city:
+    type: text
+    influence_conversation: true
+  date:
+    type: text
+    influence_conversation: true
+  given_name:
+    type: text
+    influence_conversation: true
+  hot_word:
+    type: text
+    influence_conversation: true
+  language:
+    type: text
+    influence_conversation: true
+  language_programming:
+    type: text
+    influence_conversation: true
+  light:
+    type: text
+    influence_conversation: true
+  location:
+    type: text
+    influence_conversation: true
+  message:
+    type: text
+    influence_conversation: true
+  no:
+    type: text
+    influence_conversation: true
+  object:
+    type: text
+    influence_conversation: true
+  on_off:
+    type: text
+    influence_conversation: true
+  reminder_type:
+    type: text
+    influence_conversation: true
+  time:
+    type: text
+    influence_conversation: true
+  voice:
+    type: text
+    influence_conversation: false
+  yes:
+    type: text
+    influence_conversation: true
+  country:
+    type: text
+    influence_conversation: true
+responses:
+  utter_greet:
+  - custom:
+      entities: ''
+      intent: greet
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: Hey variable! How are you?
+      topic: robot/nlp/get_person_name
+  utter_did_that_help:
+  - custom:
+      entities: ''
+      intent: utter_did_that_help
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Did that help you?
+      topic: ''
+  utter_happy:
+  - custom:
+      entities: ''
+      intent: utter_happy
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Great, carry on!
+      topic: ''
+  utter_thankyou:
+  - custom:
+      entities: ''
+      intent: thankyou
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: you are welcome!
+      topic: ''
+  utter_goodbye:
+  - custom:
+      entities: ''
+      intent: utter_goodbye
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Bye!!!!
+      topic: ''
+  utter_iamabot:
+  - custom:
+      entities: ''
+      intent: utter_iamabot
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: I am a bot, powered by Rasa.
+      topic: ''
+  utter_search_person:
+  - custom:
+      entities: ''
+      intent: search_person
+      payload: '{given_name}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Ok, going to search where is {given_name}
+      topic: robot/nlp/search_person
+  utter_search_object:
+  - custom:
+      entities: ''
+      intent: search_object
+      payload: '{object}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: ok, looking for your {object}
+      topic: robot/nlp/search_object
+  utter_get_location_map:
+  - custom:
+      entities: ''
+      intent: get_location_map
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Let me show you the {location} on the map. Would you like me to take you
+        there?
+      topic: robot/nlp/get_location_map
+  utter_get_current_time:
+  - custom:
+      entities: ''
+      intent: get_current_time
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: The current time is variable on Jerusalem Israel
+      topic: robot/nlp/get_current_time
+  utter_add_new_user:
+  - custom:
+      entities: ''
+      intent: add_new_user
+      payload: '{given_name}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: "{given_name} , stand in front of the camera now, don't move please."
+      topic: robot/nlp/add_new_user
+  utter_agent_battery:
+  - custom:
+      entities: ''
+      intent: agent_battery
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: My battery level is variable and I will need to be recharged in variable.
+        I will automatically return to the charging base in variable.
+      topic: robot/nlp/ask_battery
+  utter_agent_cpu:
+  - custom:
+      entities: ''
+      intent: agent_cpu
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: the current CPU speed is variable GHz.
+      topic: robot/nlp/get_robot_cpu_speed
+  utter_agent_cpu_temperature:
+  - custom:
+      entities: ''
+      intent: agent_cpu_temperature
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: the current CPU temperature is variable °C.
+      topic: robot/nlp/get_robot_cpu_temp
+  utter_call_person:
+  - custom:
+      entities: ''
+      intent: call_person
+      payload: '{given_name}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: ok, I'm calling {given_name}
+      topic: robot/nlp/call_person
+  utter_ask_name:
+  - custom:
+      entities: ''
+      intent: ask_name
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: true
+      subscribe: false
+      text: who to call?
+      topic: ''
+  utter_ask_voice:
+  - custom:
+      entities: ''
+      intent: ask_voice
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: true
+      subscribe: false
+      text: which voice?
+      topic: ''
+  utter_change_robot_language:
+  - custom:
+      entities: ''
+      intent: change_robot_language
+      payload:
+        language: null
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: Okay, Changing my default language from variable to {language}
+      topic: robot/nlp/change_robot_language
+  utter_ask_language:
+  - custom:
+      entities: ''
+      intent: ask_language
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: true
+      subscribe: false
+      text: which language?
+      topic: ''
+  utter_change_robot_name:
+  - custom:
+      entities: ''
+      intent: change_robot_name
+      payload: '{given_name}'
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: OK. Hi variable, I am {given_name}, nice to meet you
+      topic: robot/nlp/change_robot_name
+  utter_change_robot_voice:
+  - custom:
+      entities: ''
+      intent: change_robot_voice
+      payload: '{voice}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Changes my voice to {voice}
+      topic: robot/nlp/change_robot_voice
+  utter_currently_user_location:
+  - custom:
+      entities: ''
+      intent: currently_user_location
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: currently_user_location
+      topic: null
+  utter_delete_user:
+  - custom:
+      entities: ''
+      intent: delete_user
+      payload: '{given_name}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: OK. Please confirm that {given_name} is being removed as an authorized
+        user
+      topic: robot/nlp/delete_user
+  utter_diary_reminder:
+  - custom:
+      entities: ''
+      intent: diary_reminder
+      payload: '{date}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Okay, I will remind you to {reminder_type} on {date} at {time}.
+      topic: robot/nlp/diary_reminder
+  utter_employee_shift_start:
+  - custom:
+      entities: ''
+      intent: employee_shift_start
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: employee_shift_start
+      topic: ''
+  utter_General_Jokes:
+  - custom:
+      entities: ''
+      intent: General_Jokes
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: My name is little dancing man but you can call me dark and every day I
+        do a jig from morning until dark. Fine lassies come from far and wide to watch
+        me shake my touch and if they start to crowd me 1 yell ‘ladies’ please don’t
+        push!
+      topic: ''
+  - custom:
+      entities: ''
+      intent: General_Jokes
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: 'Pappu went to a doctor to get a solution of loose motions. Doctor: tell
+        me, what’s your problem? Pappu: Suffering from unlimited free outgoing with
+        different ringtones.'
+      topic: ''
+  - custom:
+      entities: ''
+      intent: General_Jokes
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: 'Manager: What is your qualification? Pappu: I’m Ph.D. Manager: What do
+        you mean by Ph.D.? Pappu: Passed high school with difficulty.'
+      topic: ''
+  - custom:
+      entities: ''
+      intent: General_Jokes
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Once Rajnikanth went to Switzerland and accidentally dropped his wallet
+        in a building. Since then the building is known as ‘Swiss Bank’
+      topic: ''
+  - custom:
+      entities: ''
+      intent: General_Jokes
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: The best day for you in the whole year is April 1 because that’s the day
+        that suits you best.
+      topic: ''
+  - custom:
+      entities: ''
+      intent: General_Jokes
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Money can’t buy love, but it improves your bargaining position…
+      topic: ''
+  - custom:
+      entities: ''
+      intent: General_Jokes
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: 'Interviewer: What is a skeleton? Sardar: Sir, skeleton is a person who
+        started dieting, but forgot to stop it.'
+      topic: ''
+  - custom:
+      entities: ''
+      intent: General_Jokes
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: A fast beating heart doesn’t always mean love. A blushing face is not
+        always a sign that you’re in love. Sometimes hubog lang! Hahaha
+      topic: ''
+  - custom:
+      entities: ''
+      intent: General_Jokes
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Every new year’s I resolve to lose 20 pounds and I do. The problem is
+        that I gain 30.
+      topic: ''
+  utter_get_agent_details:
+  - custom:
+      entities: ''
+      intent: get_agent_details
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: My name is variable and I am at your service
+      topic: robot/nlp/get_agent_details
+  utter_get_agent_feeling:
+  - custom:
+      entities: ''
+      intent: get_agent_feeling
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: get_agent_feeling
+      topic: robot/nlp/ask_battery_feeling
+  utter_get_agent_name:
+  - custom:
+      entities: ''
+      intent: get_agent_name
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: My name is variable!
+      topic: ''
+  utter_get_current_date:
+  - custom:
+      entities: ''
+      intent: get_current_date
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: The current date is variable
+      topic: robot/nlp/get_current_date
+  utter_get_daily_schedule:
+  - custom:
+      entities: ''
+      intent: get_daily_schedule
+      payload: '{date}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: false
+      set_screen_daley_to_mm: true
+      set_screen_state_mm: true
+      slot_missing: false
+      subscribe: true
+      text: variable, it looks like you have quite a busy day ahead of you sys-date.literal.
+        {date} variable
+      topic: robot/nlp/get_daily_schedule
+  utter_get_list_voice_options:
+  - custom:
+      entities: ''
+      intent: get_list_voice_options
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: My current voice is variable, my other voice options are
+      topic: robot/nlp/get_list_voice_options
+  utter_get_map:
+  - custom:
+      entities: ''
+      intent: get_map
+      payload: ''
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: false
+      set_screen_daley_to_mm: true
+      set_screen_state_mm: true
+      slot_missing: false
+      subscribe: false
+      text: Okay, I'll show you a map of this area
+      topic: robot/nlp/get_map
+  utter_get_temperature:
+  - custom:
+      entities: ''
+      intent: get_temperature
+      payload: ''
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: The temperature in {location} is variable °C
+      topic: robot/nlp/get_temperature
+  utter_get_weather_in_location:
+  - custom:
+      entities: ''
+      intent: get_weather_in_location
+      payload: '{city}, {date}'
+      play_delay_file: true
+      publish: true
+      publish_robot_text_mm: false
+      set_screen_daley_to_mm: true
+      set_screen_state_mm: true
+      slot_missing: false
+      subscribe: true
+      text: The weather {date} in {city} is variable
+      topic: robot/nlp/get_weather_in_location
+  utter_get_weather_outside:
+  - custom:
+      entities: ''
+      intent: get_weather_outside
+      payload: ''
+      play_delay_file: true
+      publish: true
+      publish_robot_text_mm: false
+      set_screen_daley_to_mm: true
+      set_screen_state_mm: true
+      slot_missing: false
+      subscribe: true
+      text: The weather outside right now is variable
+      topic: robot/nlp/get_weather_outside
+  utter_help_user:
+  - custom:
+      entities: ''
+      intent: help_user
+      payload: ''
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Following emergency protocol. I am calling 9 1 1 and your wife now
+      topic: robot/nlp/help_user
+  utter_person:
+  - custom:
+      entities: ''
+      intent: person
+      payload: '{given_name}'
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: person {given_name}
+      topic: robot/nlp/person
+  utter_recognize_hot_word:
+  - custom:
+      entities: ''
+      intent: recognize_hot_word
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: HI variable. How can I help you?
+      topic: robot/nlp/hot_word
+  - custom:
+      entities: ''
+      intent: recognize_hot_word
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: Hello variable. How can I help you?
+      topic: robot/nlp/hot_word
+  - custom:
+      entities: ''
+      intent: recognize_hot_word
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: HI variable. How are you?
+      topic: robot/nlp/hot_word
+  - custom:
+      entities: ''
+      intent: recognize_hot_word
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: Hello variable. How are you?
+      topic: robot/nlp/hot_word
+  - custom:
+      entities: ''
+      intent: recognize_hot_word
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: Hello variable. What's new?
+      topic: robot/nlp/hot_word
+  - custom:
+      entities: ''
+      intent: recognize_hot_word
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: Hey variable. What's new?
+      topic: robot/nlp/hot_word
+  utter_robot_languages:
+  - custom:
+      entities: ''
+      intent: robot_languages
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: I speak English, Hablan Espaniol, French
+      topic: ''
+  utter_robot_location:
+  - custom:
+      entities: ''
+      intent: robot_location
+      payload: ''
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: false
+      set_screen_daley_to_mm: true
+      set_screen_state_mm: true
+      slot_missing: false
+      subscribe: true
+      text: I am currently located in the variable, and you can see on the map.
+      topic: robot/nlp/robot_location
+  utter_run_full_diagnostics:
+  - custom:
+      entities: ''
+      intent: run_full_diagnostics
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: run_full_diagnostics
+      topic: robot/nlp/run_full_diagnostics
+  utter_schedule_appointment:
+  - custom:
+      date_day: sys-date.day
+      date_day_literal: sys-date.literal
+      date_day_of_the_week: sys-date.day_of_week
+      date_month: sys-date.month
+      date_year: sys-date.year
+      entities: ''
+      intent: schedule_appointment
+      payload: '{appointment_type}'
+      play_delay_file: true
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: I set an appointment for {appointment_type} on sys-date.day - sys-date.month
+        - sys-date.year  at sys-time.hour:sys-time.minute
+      time: sys-time.hour:sys-time.minute
+      topic: robot/nlp/schedule_appointment
+  utter_search_person_and_delivere_message:
+  - custom:
+      entities: ''
+      intent: search_person_and_delivere_message
+      payload: '{given_name}, {message}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Okay , I'm going to look for the {given_name}, and ask her to {message}
+      topic: robot/nlp/search_person_and_delivere_message
+  utter_set_an_alarm:
+  - custom:
+      entities: ''
+      intent: set_an_alarm
+      payload: '{time}, {date}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Your alarm will go off at {time} {date}.
+      topic: robot/nlp/set_an_alarm
+  utter_set_location_2:
+  - custom:
+      entities: ''
+      intent: set_location_2
+      payload: '{location}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Okay. I'm going to the {location}
+      topic: robot/nlp/set_location
+  utter_set_location_person:
+  - custom:
+      entities: ''
+      intent: set_location_person
+      payload: '{given_name}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Okay. I'm going to {given_name}
+      topic: robot/nlp/set_location
+  utter_start_new_conversation:
+  - custom:
+      entities: ''
+      intent: start_new_conversation
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Do you need anything else?
+      topic: ''
+  utter_stop_video_shooting:
+  - custom:
+      entities: ''
+      intent: stop_video_shooting
+      payload: off
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: OK, Video recording stopped
+      topic: robot/nlp/video_shooting
+  utter_take_picture:
+  - custom:
+      entities: ''
+      intent: take_picture
+      payload: on
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Okay, I'm taking a picture
+      topic: robot/nlp/take_picture
+  utter_tell_me_about_me:
+  - custom:
+      entities: ''
+      intent: tell_me_about_me
+      payload: on
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: Your age is variable and your gender is variable
+      topic: robot/nlp/get_age_gender
+  utter_turn_lights:
+  - custom:
+      entities: ''
+      intent: turn_lights
+      payload: '{on_off} {location}'
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: turning the {location} light {on_off}.
+      topic: robot/nlp/turn_lights
+  utter_user_fell:
+  - custom:
+      entities: ''
+      intent: user_fell
+      payload: ''
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Do not worry! I'm calling 9 1 1
+      topic: robot/nlp/user_fell
+  utter_user_location:
+  - custom:
+      entities: ''
+      intent: user_location
+      payload: '{given_name}'
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: '{given_name} is variable'
+      topic: robot/nlp/user_location
+  utter_user_tired:
+  - custom:
+      entities: ''
+      intent: user_tired
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: user_tired
+      topic: ''
+  utter_video_shooting:
+  - custom:
+      entities: ''
+      intent: video_shooting
+      payload: on
+      play_delay_file: false
+      publish: true
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: OK, Video recording started
+      topic: robot/nlp/video_shooting
+  utter_visitors_schedule:
+  - custom:
+      entities: ''
+      intent: visitors_schedule
+      payload: '{date}'
+      play_delay_file: true
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: your daily is
+      topic: robot/nlp/get_daily_schedule
+  utter_where_are_we:
+  - custom:
+      entities: ''
+      intent: where_are_we
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: where_are_we
+      topic: ''
+  utter_who_is_in_the_office:
+  - custom:
+      entities: ''
+      intent: who_is_in_the_office
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: utter_who_is_in_the_office
+      topic: robot/nlp/who_is_in_the_office
+  utter_ask_city:
+  - custom:
+      entities: ''
+      intent: ask_city
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: true
+      subscribe: false
+      text: which city?
+      topic: ''
+  utter_ask_continue:
+  - text: Do you want to continue?
+  utter_submit:
+  - text: All done!
+  utter_slots_values:
+  - text: I am going to run a restaurant search using the following parameters - cuisine
+      - {voice}
+  utter_chitchat:
+  - custom:
+      entities: ''
+      intent: out_of_scope
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: false
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Blah Blah
+      topic: ''
+  utter_ask_cuisine:
+  - text: What cuisine?
+  utter_ask_num_people:
+  - text: How many people?
+  utter_ask_outdoor_seating:
+  - text: Do you want to sit outside?
+  utter_ask_preferences:
+  - text: Please provide additional preferences
+  utter_ask_feedback:
+  - text: Please give your feedback on your experience so far
+  utter_noworries:
+  - text: You are welcome :)
+  utter_wrong_cuisine:
+  - text: Cuisine type is not in the database, please try again
+  utter_wrong_num_people:
+  - text: Number of people should be a positive integer, please try again
+  utter_wrong_outdoor_seating:
+  - text: Could not convert input to boolean value, please try again
+  utter_default:
+  - custom:
+      entities: ''
+      intent: default_intent
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Sorry, I didn't understand you, please say it again.
+      topic: ''
+  utter_out_of_scope:
+  - custom:
+      entities: ''
+      intent: out_of_scope
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: false
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: false
+      text: Sorry, I can't handle that request.
+      topic: ''
+  utter_get_world_news:
+  - custom:
+      entities: ''
+      intent: get_world_news
+      payload: ''
+      play_delay_file: true
+      publish: false
+      publish_robot_text_mm: false
+      set_screen_daley_to_mm: true
+      set_screen_state_mm: true
+      slot_missing: false
+      subscribe: true
+      text: 'The news for today is: variable'
+      topic: robot/nlp/get_world_news
+  utter_get_world_news_in_country:
+  - custom:
+      entities: ''
+      intent: get_world_news_in_country
+      payload: '{country}'
+      play_delay_file: true
+      publish: false
+      publish_robot_text_mm: false
+      set_screen_daley_to_mm: true
+      set_screen_state_mm: true
+      slot_missing: false
+      subscribe: true
+      text: 'The news for today in {country} is: variable'
+      topic: robot/nlp/get_world_news_in_country
+  utter_get_agent_current:
+  - custom:
+      entities: ''
+      intent: get_agent_current
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: the current value is variable I.
+      topic: robot/nlp/get_agent_current
+  utter_get_agent_voltage:
+  - custom:
+      entities: ''
+      intent: get_agent_voltage
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: the voltage value is variable V.
+      topic: robot/nlp/get_agent_voltage
+ ######################### HADAR ###############################
+  utter_affirm_intent:
+  - custom:
+      entities: ''
+      intent: affirm
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: OK # change text reaction
+      topic: robot/nlp/get_agent_voltage
+  utter_deny_intent:
+  - custom:
+      entities: ''
+      intent: affirm
+      payload: ''
+      play_delay_file: false
+      publish: false
+      publish_robot_text_mm: true
+      set_screen_daley_to_mm: false
+      set_screen_state_mm: false
+      slot_missing: false
+      subscribe: true
+      text: OK # change text reaction
+      topic: robot/nlp/get_agent_voltage
+######################### HADAR ###############################
+actions:
+- action_ask_name
+- action_ask_language
+- restaurant_form
+- action_reset_slot
+- action_set_date
+
+forms:
+  user_form:
+    slot_name:
+    - type: from_entity
+      entity: given_name
+      role: role_name
+      group: group name
+      intent: intent_name
+      not_intent: excluded_intent
